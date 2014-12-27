@@ -1,0 +1,1 @@
+/home/lv/Documentos/lua/clima.lua
