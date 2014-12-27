@@ -1,0 +1,4 @@
+Dotfiles
+========
+
+Configuraciones varias (:
