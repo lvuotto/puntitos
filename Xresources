@@ -1,0 +1,279 @@
+! URxvt*termName:           string
+! URxvt*geometry:           geometry
+! URxvt*chdir:              string
+! URxvt*reverseVideo:       boolean
+! URxvt*loginShell:         boolean
+! URxvt*jumpScroll:         boolean
+! URxvt*skipScroll:         boolean
+! URxvt*pastableTabs:       boolean
+! URxvt*scrollstyle:        mode
+! URxvt*scrollBar:          boolean
+! URxvt*scrollBar_right:    boolean
+! URxvt*scrollBar_align:    mode
+! URxvt*thickness:          number
+! URxvt*scrollTtyOutput:    boolean
+! URxvt*scrollTtyKeypress:  boolean
+! URxvt*scrollWithBuffer:   boolean
+! URxvt*inheritPixmap:      boolean
+! URxvt*transparent:        boolean
+! URxvt*tintColor:          color
+! URxvt*shading:            number
+! URxvt*blurRadius:         HxV
+! URxvt*fading:             number
+! URxvt*fadeColor:          color
+! URxvt*utmpInhibit:        boolean
+! URxvt*urgentOnBell:       boolean
+! URxvt*visualBell:         boolean
+! URxvt*mapAlert:           boolean
+! URxvt*meta8:              boolean
+! URxvt*mouseWheelScrollPage:   boolean
+! URxvt*tripleclickwords:   boolean
+! URxvt*insecure:           boolean
+! URxvt*cursorUnderline:    boolean
+! URxvt*cursorBlink:        boolean
+! URxvt*pointerBlank:       boolean
+! URxvt*background:         color
+! URxvt*foreground:         color
+! URxvt*color0:             color
+! URxvt*color1:             color
+! URxvt*color2:             color
+! URxvt*color3:             color
+! URxvt*color4:             color
+! URxvt*color5:             color
+! URxvt*color6:             color
+! URxvt*color7:             color
+! URxvt*color8:             color
+! URxvt*color9:             color
+! URxvt*color10:            color
+! URxvt*color11:            color
+! URxvt*color12:            color
+! URxvt*color13:            color
+! URxvt*color14:            color
+! URxvt*color15:            color
+! URxvt*colorBD:            color
+! URxvt*colorIT:            color
+! URxvt*colorUL:            color
+! URxvt*colorRV:            color
+! URxvt*underlineColor:     color
+! URxvt*scrollColor:        color
+! URxvt*troughColor:        color
+! URxvt*highlightColor:     color
+! URxvt*cursorColor:        color
+! URxvt*cursorColor2:       color
+! URxvt*pointerColor:       color
+! URxvt*pointerColor2:      color
+! URxvt*borderColor:        color
+! URxvt*path:               search path
+! URxvt*backgroundPixmap:   file[;geom]
+! URxvt*iconFile:           file
+! URxvt*font:               fontname
+! URxvt*boldFont:           fontname
+! URxvt*italicFont:         fontname
+! URxvt*boldItalicFont:     fontname
+! URxvt*intensityStyles:    boolean
+! URxvt*inputMethod:        name
+! URxvt*preeditType:        style
+! URxvt*imLocale:           string
+! URxvt*imFont:             fontname
+! URxvt*title:              string
+! URxvt*iconName:           string
+! URxvt*saveLines:          number
+! URxvt*depth:              number
+! URxvt*buffered:           boolean
+! URxvt*transient-for:      windowid
+! URxvt*override-redirect:  boolean
+! URxvt*hold:               boolean
+! URxvt*externalBorder:     number
+! URxvt*internalBorder:     number
+! URxvt*borderLess:         boolean
+! URxvt*lineSpace:          number
+! URxvt*letterSpace:        number
+! URxvt*skipBuiltinGlyphs:  boolean
+! URxvt*pointerBlankDelay:  number
+! URxvt*backspacekey:       string
+! URxvt*deletekey:          string
+! URxvt*print-pipe:         string
+! URxvt*modifier:           modifier
+! URxvt*cutchars:           string
+! URxvt*answerbackString:   string
+! URxvt*secondaryScreen:    boolean
+! URxvt*secondaryScroll:    boolean
+! URxvt*perl-lib:           string
+! URxvt*perl-eval:          perl-eval
+! URxvt*perl-ext-common:    string
+! URxvt*perl-ext:           string
+! URxvt*iso14755:           boolean
+! URxvt*iso14755_52:        boolean
+! URxvt*xrm:                string
+! URxvt*keysym.sym:         keysym
+
+
+URxvt*depth: 32
+
+! Base16 Tomorrow
+! Scheme: Chris Kempson (http://chriskempson.com)
+#define base00 #1d1f21
+#define base01 #282a2e
+#define base02 #373b41
+#define base03 #969896
+#define base04 #b4b7b4
+#define base05 #c5c8c6
+#define base06 #e0e0e0
+#define base07 #ffffff
+#define base08 #cc6666
+#define base09 #de935f
+#define base0A #f0c674
+#define base0B #b5bd68
+#define base0C #8abeb7
+#define base0D #81a2be
+#define base0E #b294bb
+#define base0F #a3685a
+
+!~ ! Base16 Ashes
+!~ ! Scheme: Jannik Siebert (https://github.com/janniks)
+!~ #define base00 #1c2023
+!~ #define base01 #393f45
+!~ #define base02 #565e65
+!~ #define base03 #747c84
+!~ #define base04 #adb3ba
+!~ #define base05 #c7ccd1
+!~ #define base06 #dfe2e5
+!~ #define base07 #f3f4f5
+!~ #define base08 #c7ae95
+!~ #define base09 #c7c795
+!~ #define base0A #aec795
+!~ #define base0B #95c7ae
+!~ #define base0C #95aec7
+!~ #define base0D #ae95c7
+!~ #define base0E #c795ae
+!~ #define base0F #c79595
+
+!~ ! Base16 Mocha
+!~ ! Scheme: Chris Kempson (http://chriskempson.com)
+!~ #define base00 #3b3228
+!~ #define base01 #534636
+!~ #define base02 #645240
+!~ #define base03 #7e705a
+!~ #define base04 #b8afad
+!~ #define base05 #d0c8c6
+!~ #define base06 #e9e1dd
+!~ #define base07 #f5eeeb
+!~ #define base08 #cb6077
+!~ #define base09 #d28b71
+!~ #define base0A #f4bc87
+!~ #define base0B #beb55b
+!~ #define base0C #7bbda4
+!~ #define base0D #8ab3b5
+!~ #define base0E #a89bb9
+!~ #define base0F #bb9584
+
+! Base16 Ocean
+! Scheme: Chris Kempson (http://chriskempson.com)
+!~ #define base00 #2b303b
+!~ #define base01 #343d46
+!~ #define base02 #4f5b66
+!~ #define base03 #65737e
+!~ #define base04 #a7adba
+!~ #define base05 #c0c5ce
+!~ #define base06 #dfe1e8
+!~ #define base07 #eff1f5
+!~ #define base08 #bf616a
+!~ #define base09 #d08770
+!~ #define base0A #ebcb8b
+!~ #define base0B #a3be8c
+!~ #define base0C #96b5b4
+!~ #define base0D #8fa1b3
+!~ #define base0E #b48ead
+!~ #define base0F #ab7967
+
+!~ ! Base16 Default
+!~ ! Scheme: Chris Kempson (http://chriskempson.com)
+!~ #define base00 #151515
+!~ #define base01 #202020
+!~ #define base02 #303030
+!~ #define base03 #505050
+!~ #define base04 #b0b0b0
+!~ #define base05 #d0d0d0
+!~ #define base06 #e0e0e0
+!~ #define base07 #f5f5f5
+!~ #define base08 #ac4142
+!~ #define base09 #d28445
+!~ #define base0A #f4bf75
+!~ #define base0B #90a959
+!~ #define base0C #75b5aa
+!~ #define base0D #6a9fb5
+!~ #define base0E #aa759f
+!~ #define base0F #8f5536
+
+URxvt*foreground: base05
+URxvt*background: base00
+URxvt*cursorColor: base05
+URxvt*color0: base00
+URxvt*color1: base08
+URxvt*color2: base0B
+URxvt*color3: base0A
+URxvt*color4: base0D
+URxvt*color5: base0E
+URxvt*color6: base0C
+URxvt*color7: base05
+URxvt*color8: base03
+URxvt*color9: base08
+URxvt*color10: base0B
+URxvt*color11: base0A
+URxvt*color12: base0D
+URxvt*color13: base0E
+URxvt*color14: base0C
+URxvt*color15: base07
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+URxvt*color16: base09
+URxvt*color17: base0F
+URxvt*color18: base01
+URxvt*color19: base02
+URxvt*color20: base04
+URxvt*color21: base06
+
+! Fondo transparente
+!URxvt*shading: 40
+!URxvt*transparent: true
+!URxvt*blurRadius: 5
+
+
+! URL
+URxvt.perl-ext-common: default,matcher,background
+URxvt.matcher.urlLauncher: /home/lv/Apps/firefox/firefox -p lv
+!URxvt.matcher.url-launcher: /home/lv/Apps/firefox/firefox -p lv
+*url-launcher: /home/lv/Apps/firefox/firefox -p lv
+URxvt.matcher.button: 1
+!URxvt.background.expr: rootalign keep { blur 5, root }
+
+
+! URL
+!*perl-ext: default,url-select
+!*keysym.M-u: perl:url-select:select_next
+!*url-select.launcher: /usr/bin/firefox -new-tab
+!*url-select.underline: true
+
+
+! Otros
+URxvt*letterSpace: 0
+URxvt*loginShell: false
+URxvt*scrollBar: false
+URxvt*font: xft:Fira Mono:size=8
+!URxvt*font: xft:DejaVu Sans Mono:size=9
+!URxvt*font: xft:Terminus:size=9
+!URxvt*font: xft:Source Code Pro:Light:size=8
+!URxvt*font: xft:Source Code Pro:size=8
+!URxvt*font: -*-terminus-*-*-*-*-12-*-*-*-*-*-iso8859-*
+!URxvt*font: -misc-fixed-medium-r-normal--13-120-75-75-c-60-iso10646-1
+!URxvt*font: 6x13
+URxvt*cursorUnderline: true
+URxvt*cursorBlink: true
+
+
+!~ ! Xft
+!~ Xft.dpi: 96
+!~ Xft.antialias: rgba
+!~ Xft.hinting: true
+!~ Xft.hintstyle: hintfull
+!~ !Xft.rgba: rgb
