@@ -1,3 +1,4 @@
-# Colores & undo de vim
+# Colores, undo & netrw de vim
+vim/.netrwhist
 vim/colors
 vim/undo
