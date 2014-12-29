@@ -225,7 +225,7 @@ box_clima = widget({ type = "textbox", name = "box_clima" })
 box_clima.text = weather_format(weather.update())
 box_clima:buttons(awful.util.table.join(
     awful.button({}, 1, function ()
-        awful.util.spawn(weather_format(weather.update()))
+        box_clima.text = weather_format(weather.update())
     end)
 ))
 
