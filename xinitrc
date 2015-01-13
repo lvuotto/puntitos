@@ -21,6 +21,6 @@ xfsettingsd &
 nm-applet &
 transmission-gtk -m &
 pgrep mpd 2>&1 > /dev/null || mpd &
-$HOME/.local/bin/weechat-wrapper &
-$HOME/.local/bin/ncmpcpp-wrapper &
+$HOME/.local/bin/tmux-session-launcher weechat weechat &
+$HOME/.local/bin/tmux-session-launcher ncmpcpp ncmpcpp &
 exec /usr/bin/awesome
