@@ -493,6 +493,16 @@ clientkeys = awful.util.table.join(
         -- minimized, since minimized clients can't have the focus.
         c.minimized = true
     end),
+    -- Unminize all windows.
+    -- https://bbs.archlinux.org/viewtopic.php?pid=838153#p838153
+    -- Needs at least one open and not minimized client.
+    awful.key({ modkey, "Shift"   }, "n", function ()
+        local t = awful.tag.selected()
+        for i = 1, #t:clients() do
+            t:clients()[i].minimized = false
+            t:clients()[i]:redraw()
+        end
+    end),
     awful.key({ modkey, "Shift"   }, "m", function (c)
         c.maximized_horizontal = not c.maximized_horizontal
         c.maximized_vertical   = not c.maximized_vertical
