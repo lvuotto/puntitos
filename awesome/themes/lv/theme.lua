@@ -4,6 +4,24 @@
 
 theme = {}
 
+-- Base16 Eighties
+theme.base00 = "#2d2d2d"
+theme.base01 = "#393939"
+theme.base02 = "#515151"
+theme.base03 = "#747369"
+theme.base04 = "#a09f93"
+theme.base05 = "#d3d0c8"
+theme.base06 = "#e8e6df"
+theme.base07 = "#f2f0ec"
+theme.base08 = "#f2777a"
+theme.base09 = "#f99157"
+theme.base0A = "#ffcc66"
+theme.base0B = "#99cc99"
+theme.base0C = "#66cccc"
+theme.base0D = "#6699cc"
+theme.base0E = "#cc99cc"
+theme.base0F = "#d27b53"
+
 --~ -- Base16 Ocean
 --~ theme.base00 = "#2b303b"
 --~ theme.base01 = "#343d46"
@@ -40,23 +58,23 @@ theme = {}
 --~ theme.base0E = "#a89bb9"
 --~ theme.base0F = "#bb9584"
 
--- Base16 Tomorrow
-theme.base00 = "#1d1f21"
-theme.base01 = "#282a2e"
-theme.base02 = "#373b41"
-theme.base03 = "#969896"
-theme.base04 = "#b4b7b4"
-theme.base05 = "#c5c8c6"
-theme.base06 = "#e0e0e0"
-theme.base07 = "#ffffff"
-theme.base08 = "#cc6666"
-theme.base09 = "#de935f"
-theme.base0A = "#f0c674"
-theme.base0B = "#b5bd68"
-theme.base0C = "#8abeb7"
-theme.base0D = "#81a2be"
-theme.base0E = "#b294bb"
-theme.base0F = "#a3685a"
+--~ -- Base16 Tomorrow
+--~ theme.base00 = "#1d1f21"
+--~ theme.base01 = "#282a2e"
+--~ theme.base02 = "#373b41"
+--~ theme.base03 = "#969896"
+--~ theme.base04 = "#b4b7b4"
+--~ theme.base05 = "#c5c8c6"
+--~ theme.base06 = "#e0e0e0"
+--~ theme.base07 = "#ffffff"
+--~ theme.base08 = "#cc6666"
+--~ theme.base09 = "#de935f"
+--~ theme.base0A = "#f0c674"
+--~ theme.base0B = "#b5bd68"
+--~ theme.base0C = "#8abeb7"
+--~ theme.base0D = "#81a2be"
+--~ theme.base0E = "#b294bb"
+--~ theme.base0F = "#a3685a"
 
 theme.font          = "Fira Mono 9"
 
