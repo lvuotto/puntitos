@@ -473,7 +473,11 @@ globalkeys = awful.util.table.join(
         mypromptbox[mouse.screen].widget,
         awful.util.eval, nil,
         awful.util.getdir("cache") .. "/history_eval")
-      end)
+    end),
+    
+    -- Custom shortcuts.
+    awful.key({ modkey,           }, "<", music.previous),
+    awful.key({ modkey, "Shift"   }, "<", music.next)
 )
 
 clientkeys = awful.util.table.join(
