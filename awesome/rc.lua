@@ -88,7 +88,7 @@ end
 
 -- This is used later as the default terminal and editor to run.
 cmd = {}
-cmd.terminal = "urxvt"
+cmd.terminal = "st"
 cmd.editor = os.getenv("EDITOR") or "editor"
 cmd.editor_cmd = cmd.terminal .. " -e " .. cmd.editor
 cmd.firefox = "Apps/firefox/firefox -p lv"
@@ -97,6 +97,7 @@ cmd.pragha = "pragha"
 cmd.dmenu = "dmenu_run -i -p 'run'"
 cmd.locker = "slock"
 cmd.email = "Apps/thunderbird/thunderbird -p lv"
+cmd.session_handler = "session-handler"
 cmd.autostart = {
     gtk = "xfsettingsd",
     red = "nm-applet",
@@ -302,6 +303,16 @@ box_music.playlist:buttons(awful.util.table.join(
 ))
 
 
+-- Sesión.
+box_sesion = widget({ type = "textbox", name = "box_sesion" })
+box_sesion.text = ' <span font="Icons" color="' .. theme.base0C .. '"></span>'
+box_sesion:buttons(awful.util.table.join(
+    awful.button({}, 1, function()
+        awful.util.spawn(cmd.session_handler)
+    end)
+))
+
+
 timer_clima = timer({ timeout = 1800 })
 timer_clima:add_signal("timeout",function ()
     box_clima.text = weather_format(weather.update(vicente_lopez))
@@ -394,6 +405,7 @@ for s = 1, screen.count() do
         },
         --mylayoutbox[s],
         myspacer,
+        box_sesion,
         box_sonido,
         box_music.playlist,
         box_music.next,
@@ -452,7 +464,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "w", function () awful.util.spawn(cmd.firefox) end),
     awful.key({ modkey, "Shift"   }, "w", function () awful.util.spawn(cmd.weechat) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ modkey, "Shift"   }, "q", function () awful.util.spawn(cmd.session_handler) end),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
