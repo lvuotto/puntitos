@@ -24,7 +24,7 @@ PROMPT='
 $(lv_prompt)%{$reset_color%}'
 RPROMPT='┘'
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg_no_bold[blue]%}git%{$reset_color%}, on branch %{$fg_no_bold[magenta]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_no_bold[red]%} ±"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_no_bold[green]%} ✓"
+ZSH_THEME_GIT_PROMPT_PREFIX="[%{$fg_no_bold[blue]%}git%{$reset_color%}:%{$fg_no_bold[magenta]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$reset_color%}]─[%{$fg_no_bold[red]%}±%{$reset_color%}]"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%}]─[%{$fg_no_bold[green]%}✓%{$reset_color%}]"
