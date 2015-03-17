@@ -1,26 +1,29 @@
 #!/bin/sh
 
+runonce() {
+    p=$(echo "${1:-}" | cut -c -15)
+    [ -n "$p" ] || return
+    pgrep -x "$p" 2>&1 > /dev/null || exec "$@"
+}
+
+[ -f ~/.env ] && . ~/.env
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
-numlockx on &
-# mpd & mpc
-export MPD_HOST="$HOME/.config/mpd/socket"
+numlockx on
+xsetbg "$HOME/Imágenes/dwm-1280x720.png"
+xset s 600
+$HOME/.scripts/xsidle.sh &
 
-#~ # dwm
-#~ xsetbg -onroot -center "Imágenes/dwm.png" &
-#~ xfsettingsd &
-#~ nm-applet &
-#~ transmission-gtk -m &
-#~ pgrep mpd 2>&1 > /dev/null || mpd &
-#~ $HOME/.local/bin/weechat-wrapper &
-#~ $HOME/.local/bin/ncmpcpp-wrapper &
-#~ $HOME/.local/bin/dwmstatus &
-#~ exec $HOME/.local/bin/dwm
+runonce xfsettingsd &
+runonce transmission-daemon &
+runonce mpd 2> "$HOME/.mpd-log" &
 
-# awesome
-xfsettingsd &
-nm-applet &
-transmission-gtk -m &
-pgrep mpd 2>&1 > /dev/null || mpd &
-$HOME/.local/bin/tmux-session-launcher weechat weechat &
-$HOME/.local/bin/tmux-session-launcher ncmpcpp ncmpcpp &
-exec /usr/bin/awesome
+tmux new -d &
+$HOME/.scripts/tmux-session-launcher weechat &
+$HOME/.scripts/tmux-session-launcher media &
+$HOME/.scripts/tmux-session-launcher lv &
+
+pkill dwmstatus
+$HOME/.scripts/dwmstatus 2> "$HOME/.dwmstatus-err" &
+
+#~ exec /usr/bin/awesome
+exec dwm 2> "$HOME/.dwm-err"
