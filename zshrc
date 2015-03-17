@@ -45,22 +45,12 @@ ZSH_THEME="lv"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git mercurial)
 
 # Vi-mode ftw!
 #bindkey -v
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-#~ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
-#~ # PATH
-#~ export PATH="$PATH:$HOME/.local/bin"
-#~ export PATH="$PATH:$HOME/.local/sbin"
-#~ export PATH="$PATH:$HOME/.gem/ruby/1.9.1/bin"
-#~ export PATH="$PATH:$HOME/Música/bin"
-#~ export PATH="$PATH:$HOME/.luarocks/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
