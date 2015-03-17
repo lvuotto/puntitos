@@ -1,0 +1,75 @@
+#!/bin/sh
+
+musicfmt(){
+    title=$(mpc -f "[%title%]|[%file%]" current)
+    title=${title##*/}
+    [ -n "$title" ] && echo -n "♫ $title | "
+}
+
+
+olddown=0
+oldup=0
+netdown=0
+netup=0
+
+netupdate(){
+    net=$(cat /proc/net/dev | awk '$1 ~ /eth0/ { print $2, $10; }')
+    newdown=$(echo $net | cut -d ' ' -f 1)
+    newup=$(echo $net | cut -d ' ' -f 2)
+    netdown=$(echo "($newdown - $olddown) / 1024.0" | bc -l)
+    netup=$(echo "($newup - $oldup) / 1024.0" | bc -l)
+    #netdown=$(( ($newdown - $olddown) / 1024 ))
+    #netup=$(( ($newup - $oldup) / 1024 ))
+    olddown=$newdown
+    oldup=$newup
+}
+
+netfmt(){
+    ndc=$(echo "$netdown > 1024" | bc)
+    nuc=$(echo "$netup > 1024" | bc)
+    if [ $ndc -eq 1 ]; then
+        down=$(echo "$netdown / 1024.0" | bc -l)
+        downf="MB/s"
+    else
+        down=$netdown
+        downf="KB/s"
+    fi
+    if [ $nuc -eq 1 ]; then
+        up=$(echo "$netup / 1024.0" | bc -l)
+        upf="MB/s"
+    else
+        up=$netup
+        upf="KB/s"
+    fi
+    printf "↓%6.1f$downf ↑%6.1f$upf | " $down $up
+}
+
+
+weatherfmt(){
+    s=$(cat $HOME/.scripts-data/weather-condition || echo -n "n/a")
+    echo "$s | "
+}
+
+
+datefmt(){
+    date +"%A, %d de %B - %R | "
+}
+
+
+soundfmt(){
+    amixer get Master | awk ' \
+BEGIN { FS = "[][]"; s = 0; c = 0; } \
+$2 { s += $2; c++; } \
+END { printf "%3d%% | ", s / c; }'
+}
+
+
+DWM_VERSION=$(dwm -v 2>&1 | cut -d"," -f 1)
+$HOME/.scripts/weather-update.sh &
+
+netupdate
+while true; do
+    netupdate
+    xsetroot -name "$(musicfmt)$(netfmt)$(weatherfmt)$(datefmt)$(soundfmt)$DWM_VERSION"
+    sleep 1
+done

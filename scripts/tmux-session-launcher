@@ -1,0 +1,20 @@
+#!/bin/sh
+
+session=${1:-}
+if [ -z "$session" ]; then
+    echo "Usage: $0 <session-name>"
+    return 1
+fi
+
+#tmux has -t $session 2> /dev/null
+tmux has -t $session
+if [ $? -eq 0 ]; then
+    st -c $session -e tmux attach -t $session
+else
+    sessionconf="$HOME/.tmux/sessions/$session"
+    if [ -f "$sessionconf" ]; then
+        st -c $session -e tmux source $sessionconf
+    else
+        st -c $session -e tmux new -s $session
+    fi
+fi

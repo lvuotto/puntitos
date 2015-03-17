@@ -1,0 +1,11 @@
+#!/bin/sh
+
+playlists=$(mpc lsplaylists)
+if [ $? -eq 0 ]; then
+    playlist=$(echo "$playlists" | sort | dmenu -i -p "Playlist")
+    if [ $? -eq 0 ]; then
+        mpc -q clear
+        mpc -q load "$playlist"
+        mpc -q play
+    fi
+fi
