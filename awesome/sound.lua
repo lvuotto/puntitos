@@ -1,1 +1,0 @@
-/home/lv/Documentos/lua/sonido.lua
