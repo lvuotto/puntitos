@@ -1,3 +1,6 @@
+" Pathogen
+execute pathogen#infect()
+
 " Plugins
 filetype plugin on
 
