@@ -1,0 +1,68 @@
+#
+# A simple theme that displays relevant, contextual information.
+#
+
+# Load dependencies.
+pmodload 'helper'
+
+function prompt_lv_pwd {
+  _prompt_lv_pwd="%(4~.…%3~.%~)"
+}
+
+function prompt_lv_precmd {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+
+  # Format PWD.
+  prompt_lv_pwd
+
+  # Get Git repository information.
+  if (( $+functions[git-info] )); then
+    git-info
+  fi
+}
+
+function prompt_lv_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+
+  # Add hook for calling git-info before each command.
+  add-zsh-hook precmd prompt_lv_precmd
+
+  # Set editor-info parameters.
+  zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
+
+  # Set git-info parameters.
+  zstyle ':prezto:module:git:info' verbose 'yes'
+  zstyle ':prezto:module:git:info:branch' format ':%F{magenta}%b%f'
+  zstyle ':prezto:module:git:info:commit' format ':%F{magenta}%.7c%f'
+  zstyle ':prezto:module:git:info:position' format ':%F{magenta}%p%f'
+  zstyle ':prezto:module:git:info:action' format ':%s'
+  zstyle ':prezto:module:git:info:clean' format ':%F{green}✔%f'
+  zstyle ':prezto:module:git:info:stashed' format ':%F{cyan}⚓%S%f'
+  zstyle ':prezto:module:git:info:ahead' format ':%F{yellow}⬆%A%f'
+  zstyle ':prezto:module:git:info:behind' format ':%F{yellow}⬇%B%f'
+  zstyle ':prezto:module:git:info:unmerged' format ':%F{yellow}═%U%f'
+  zstyle ':prezto:module:git:info:dirty' format ':'
+  zstyle ':prezto:module:git:info:added' format '%F{green}✚%f'
+  zstyle ':prezto:module:git:info:deleted' format '%F{red}✖%f'
+  zstyle ':prezto:module:git:info:modified' format '%F{blue}±%f'
+  zstyle ':prezto:module:git:info:renamed' format '%F{magenta}➜%f'
+  zstyle ':prezto:module:git:info:untracked' format '%F{white}?%f'
+  zstyle ':prezto:module:git:info:keys' format \
+    'prompt' ' ❯ %F{blue}git%f$(coalesce "%b" "%p" "%c")%s%S%A%B%U%D%a%d%m%r%u%C' \
+    'rprompt' '%A%B%S%a%d%m%r%U%u'
+
+  # Define prompts.
+  PROMPT='
+┌ %F{cyan}%n%f ❯ %F{yellow}%m%f ❯ ${_prompt_lv_pwd}${git_info:+${(e)git_info[prompt]}}
+└ %F{green}%#%f '
+  RPROMPT=''
+  SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+}
+
+prompt_lv_setup "$@"
