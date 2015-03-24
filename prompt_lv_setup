@@ -34,27 +34,27 @@ function prompt_lv_setup {
   add-zsh-hook precmd prompt_lv_precmd
 
   # Set editor-info parameters.
-  zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
+  zstyle ':prezto:module:editor:info:completing' format '%F{red}...%f'
 
   # Set git-info parameters.
   zstyle ':prezto:module:git:info' verbose 'yes'
-  zstyle ':prezto:module:git:info:branch' format ':%F{magenta}%b%f'
-  zstyle ':prezto:module:git:info:commit' format ':%F{magenta}%.7c%f'
-  zstyle ':prezto:module:git:info:position' format ':%F{magenta}%p%f'
+  zstyle ':prezto:module:git:info:branch' format ':%F{cyan}%b%f'
+  zstyle ':prezto:module:git:info:commit' format ':%F{cyan}%.7c%f'
+  zstyle ':prezto:module:git:info:position' format ':%F{cyan}%p%f'
   zstyle ':prezto:module:git:info:action' format ':%s'
   zstyle ':prezto:module:git:info:clean' format ':%F{green}✔%f'
-  zstyle ':prezto:module:git:info:stashed' format ':%F{cyan}⚓%S%f'
-  zstyle ':prezto:module:git:info:ahead' format ':%F{yellow}⬆%A%f'
-  zstyle ':prezto:module:git:info:behind' format ':%F{yellow}⬇%B%f'
-  zstyle ':prezto:module:git:info:unmerged' format ':%F{yellow}═%U%f'
+  zstyle ':prezto:module:git:info:stashed' format ':%F{blue}⚓%S%f'
+  zstyle ':prezto:module:git:info:ahead' format ':%F{blue}↑%A%f'
+  zstyle ':prezto:module:git:info:behind' format ':%F{blue}↓%B%f'
+  zstyle ':prezto:module:git:info:unmerged' format ':%F{blue}=%U%f'
   zstyle ':prezto:module:git:info:dirty' format ':'
-  zstyle ':prezto:module:git:info:added' format '%F{green}✚%f'
   zstyle ':prezto:module:git:info:deleted' format '%F{red}✖%f'
-  zstyle ':prezto:module:git:info:modified' format '%F{blue}±%f'
+  zstyle ':prezto:module:git:info:added' format '%F{green}✚%f'
+  zstyle ':prezto:module:git:info:modified' format '%F{yellow}±%f'
   zstyle ':prezto:module:git:info:renamed' format '%F{magenta}➜%f'
-  zstyle ':prezto:module:git:info:untracked' format '%F{white}?%f'
+  zstyle ':prezto:module:git:info:untracked' format '%F{cyan}?%f'
   zstyle ':prezto:module:git:info:keys' format \
-    'prompt' ' ❯ %F{blue}git%f$(coalesce "%b" "%p" "%c")%s%S%A%B%U%D%a%d%m%r%u%C' \
+    'prompt' ' ❯ %%Bgit%%b$(coalesce "%b" "%p" "%c")%s%S%A%B%U%D%d%a%m%r%u%C' \
     'rprompt' '%A%B%S%a%d%m%r%U%u'
 
   # Define prompts.
