@@ -11,7 +11,7 @@ runonce() {
 numlockx on
 xsetbg "$HOME/Imágenes/dwm-1280x720.png"
 xset s 600
-$HOME/.scripts/xsidle.sh &
+$HOME/.scripts/xsidle.sh slock &
 
 runonce xfsettingsd &
 runonce transmission-daemon &
