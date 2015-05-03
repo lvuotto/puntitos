@@ -7,7 +7,7 @@ filetype plugin on
 " Tabulaciones.
 set softtabstop=4 shiftwidth=4 expandtab
 set autoindent smartindent copyindent
-set lcs=tab:→\ 
+set listchars=tab:→\ 
 set list
 
 " Interfaz.
@@ -35,5 +35,5 @@ colorscheme jellybeans
 
 " Formato.
 " Tiene que ir después del tema, sino no anda.
-set tw=79
-set fo=tcqr
+set textwidth=79
+set formatoptions=tcqr
