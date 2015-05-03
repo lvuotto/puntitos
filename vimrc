@@ -27,7 +27,6 @@ endif
 
 " Barra de estado.
 set laststatus=2
-set statusline=[%n]\ %t\ %1(%M%)\ %r\ %{LvGitBranch()}%=\ %Y\ %<R%5l\ C%5v\ %3p%%
 
 " Coloreo de sintaxis.
 syntax on
