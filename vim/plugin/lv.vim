@@ -1,32 +1,30 @@
-if (exists('g:lv_loaded') && g:lv_loaded)
+if exists('g:loaded_lv') && g:loaded_lv
     finish
 endif
-
-
-let g:lv_loaded = 1
+let g:loaded_lv = 1
 
 
 " Git
 
-let b:git_status = ''
+let s:git_current_branch = ''
 
-function! s:lv_git_refresh()
+function! s:git_refresh()
     let l:git_on = system('git -C ' . expand('%:p:h') .
                           \ ' symbolic-ref --short HEAD 2> /dev/null')
     if l:git_on != ''
-        let b:git_status = 'git:' . substitute(l:git_on, '\n$', '', '')
+        let s:git_current_branch = 'git:' . substitute(l:git_on, '\n$', '', '')
     else
-        let b:git_status = ''
+        let s:git_current_branch = ''
     end
 endfunction
 
 augroup LvGitStatus
     au!
-    au BufEnter * call <SID>lv_git_refresh()
+    au BufEnter * call <SID>git_refresh()
 augroup END
 
 function! LvGitBranch()
-    return b:git_status
+    return s:git_current_branch
 endfunction
 
 
@@ -40,25 +38,25 @@ function! LvStatusMode()
 
     if l:status_mode != s:last_status_mode
         if l:status_mode == 'n'
-            hi LvStatusModeHL ctermbg=4 ctermfg=16
+            highlight LvStatusModeHL ctermbg=4 ctermfg=16
             let s:last_status_mode_ret = 'N'
-        elseif (l:status_mode == 'v' || l:status_mode == 'V' || l:status_mode == '')
-            hi LvStatusModeHL ctermbg=3 ctermfg=16
+        elseif l:status_mode == 'v' || l:status_mode == 'V' || l:status_mode == ''
+            highlight LvStatusModeHL ctermbg=3 ctermfg=16
             let s:last_status_mode_ret = 'V'
-        elseif (l:status_mode == 's' || l:status_mode == 'S' || l:status_mode == '')
-            hi LvStatusModeHL ctermbg=5 ctermfg=16
+        elseif l:status_mode == 's' || l:status_mode == 'S' || l:status_mode == ''
+            highlight LvStatusModeHL ctermbg=5 ctermfg=16
             let s:last_status_mode_ret = 'S'
         elseif l:status_mode == 'i'
-            hi LvStatusModeHL ctermbg=2 ctermfg=16
+            highlight LvStatusModeHL ctermbg=2 ctermfg=16
             let s:last_status_mode_ret = 'I'
         elseif l:status_mode == 'R'
-            hi LvStatusModeHL ctermbg=1 ctermfg=16
+            highlight LvStatusModeHL ctermbg=1 ctermfg=16
             let s:last_status_mode_ret = 'R'
         elseif l:status_mode == 'Rv'
-            hi LvStatusModeHL ctermbg=1 ctermfg=16
+            highlight LvStatusModeHL ctermbg=1 ctermfg=16
             let s:last_status_mode_ret = 'v'
         else
-            hi LvStatusModeHL ctermbg=4 ctermfg=16
+            highlight LvStatusModeHL ctermbg=4 ctermfg=16
             let s:last_status_mode_ret = l:status_mode
         endif
         let s:last_status_mode = l:status_mode
