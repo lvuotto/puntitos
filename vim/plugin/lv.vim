@@ -23,7 +23,7 @@ augroup LvGitStatus
     au BufEnter * call <SID>git_refresh()
 augroup END
 
-function! LvGitBranch()
+function! lv#git_branch()
     return s:git_current_branch
 endfunction
 
@@ -33,7 +33,7 @@ endfunction
 let s:last_status_mode = ''
 let s:last_status_mode_ret = ''
 
-function! LvStatusMode()
+function! lv#stl_mode()
     let l:status_mode = mode()
 
     if l:status_mode != s:last_status_mode
@@ -66,50 +66,49 @@ function! LvStatusMode()
 endfunction
 
 
-let s:status_active = ''
-let s:status_active .= '%#LvStatusModeHL# %{LvStatusMode()} ' " mode.
-let s:status_active .= '%4* %n '                              " buffer.
-let s:status_active .= '%3* %{&fenc != "" ? &fenc : &enc} '   " encoding.
-let s:status_active .= '%2* %{&ff} '                          " format.
-let s:status_active .= '%1* %t '                              " file name.
-let s:status_active .= '%{&modified != "" ? "±" : " "} '      " modified.
-let s:status_active .= '%r '                                  " read-only.
-let s:status_active .= '%{LvGitBranch()}'                     " git info.
-let s:status_active .= '%='                                   " right align.
-let s:status_active .= ' %Y '                                 " file type.
-let s:status_active .= '%2* R%5l '                            " row.
-let s:status_active .= '%3* C%5v '                            " col.
-let s:status_active .= '%4* %3p%% '                           " scroll %.
-
-let s:status_inactive = ''
-let s:status_inactive .= ' - '
-let s:status_inactive .= ' %n '                            " buffer.
-let s:status_inactive .= ' %{&fenc != "" ? &fenc : &enc} ' " encoding.
-let s:status_inactive .= ' %{&ff} '                        " format.
-let s:status_inactive .= ' %t '                            " filename.
-let s:status_inactive .= '%{&modified != "" ? "±" : " "} ' " modified.
-let s:status_inactive .= '%r '                             " read-only.
-let s:status_inactive .= '%='                              " right-align.
-let s:status_inactive .= ' %Y '                            " file type.
-let s:status_inactive .= ' R%5l '                          " row.
-let s:status_inactive .= ' C%5v '                          " col.
-let s:status_inactive .= ' %3p%% '                         " scroll %.
-
-
-function! s:lv_status_line(active)
+function! s:lv_statusline()
     if has('statusline')
-        let &l:statusline = (a:active == 1 ? s:status_active : s:status_inactive)
+        let &statusline = ''
+        let &statusline .= ' - '
+        let &statusline .= ' %n '                            " buffer.
+        let &statusline .= ' %{&fenc != "" ? &fenc : &enc} ' " encoding.
+        let &statusline .= ' %{&ff} '                        " format.
+        let &statusline .= ' %t '                            " filename.
+        let &statusline .= '%{&modified != "" ? "±" : " "} ' " modified.
+        let &statusline .= '%r '                             " read-only.
+        let &statusline .= '%='                              " right-align.
+        let &statusline .= ' %Y '                            " file type.
+        let &statusline .= ' R%5l '                          " row.
+        let &statusline .= ' C%5v '                          " col.
+        let &statusline .= ' %3p%% '                         " scroll %.
+
+        let s:stl_active = ''
+        let s:stl_active .= '%#LvStatusModeHL# %{lv#stl_mode()} '  " mode.
+        let s:stl_active .= '%4* %n '                              " buffer.
+        let s:stl_active .= '%3* %{&fenc != "" ? &fenc : &enc} '   " encoding.
+        let s:stl_active .= '%2* %{&ff} '                          " format.
+        let s:stl_active .= '%1* %t '                              " file name.
+        let s:stl_active .= '%{&modified != "" ? "±" : " "} '      " modified.
+        let s:stl_active .= '%r '                                  " read-only.
+        let s:stl_active .= '%{lv#git_branch()}'                     " git info.
+        let s:stl_active .= '%='                                   " right align.
+        let s:stl_active .= ' %Y '                                 " file type.
+        let s:stl_active .= '%2* R%5l '                            " row.
+        let s:stl_active .= '%3* C%5v '                            " col.
+        let s:stl_active .= '%4* %3p%% '                           " scroll %.
+
+        highlight User1 ctermbg=235 ctermfg=231
+        highlight User2 ctermbg=248 ctermfg=16
+        highlight User3 ctermbg=250 ctermfg=16
+        highlight User4 ctermbg=252 ctermfg=16
+        highlight LvStatusModeHL ctermbg=4 ctermfg=16
+
+        augroup LvStatusLine
+            au!
+            au VimEnter,WinEnter,BufWinEnter * let &l:statusline = s:stl_active
+            au WinLeave,BufWinLeave * let &l:statusline = ''
+        augroup END
     endif
 endfunction
 
-augroup LvStatusLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter * call <SID>lv_status_line(1)
-    au WinLeave,BufWinLeave * call <SID>lv_status_line(0)
-augroup END
-
-highlight User1 ctermbg=235 ctermfg=231
-highlight User2 ctermbg=248 ctermfg=16
-highlight User3 ctermbg=250 ctermfg=16
-highlight User4 ctermbg=252 ctermfg=16
-highlight LvStatusModeHL ctermbg=4 ctermfg=16
+call s:lv_statusline()
