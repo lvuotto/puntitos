@@ -11,6 +11,8 @@ runonce() {
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 
 # Keyboard.
+setxkbmap "us(intl)"
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
 numlockx on
 
 # Look & feel.
