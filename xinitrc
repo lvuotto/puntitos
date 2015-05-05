@@ -6,24 +6,32 @@ runonce() {
     pgrep -x "$p" 2>&1 > /dev/null || exec "$@"
 }
 
+# Common.
 [ -f ~/.env ] && . ~/.env
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
-numlockx on
-xsetbg "$HOME/Imágenes/dwm-1280x720.png"
-xset s 600
-$HOME/.scripts/xsidle.sh slock &
 
+# Keyboard.
+numlockx on
+
+# Look & feel.
+xsetbg "${HOME}/Imágenes/dwm-1280x720.png"
+xset s 600
+~/.scripts/xsidle.sh slock &
+
+# Daemons.
 runonce xfsettingsd &
 runonce transmission-daemon &
-runonce mpd 2> "$HOME/.mpd-log" &
+runonce mpd 2> "${HOME}/.mpd-err" &
 
-tmux new -d &
-$HOME/.scripts/tmux-session-launcher weechat &
-$HOME/.scripts/tmux-session-launcher media &
-$HOME/.scripts/tmux-session-launcher lv &
+# Tmux sessions.
+runonce tmux new -d &
+~/.scripts/tmux-session-launcher weechat &
+~/.scripts/tmux-session-launcher media &
+~/.scripts/tmux-session-launcher lv &
 
+# dwm status bar.
 pkill dwmstatus
-$HOME/.scripts/dwmstatus 2> "$HOME/.dwmstatus-err" &
+~/.scripts/dwmstatus 2> "${HOME}/.dwmstatus-err" &
 
-#~ exec /usr/bin/awesome
-exec dwm 2> "$HOME/.dwm-err"
+# Dwm
+exec ~/.local/bin/dwm 2> "${HOME}/.dwm-err"
