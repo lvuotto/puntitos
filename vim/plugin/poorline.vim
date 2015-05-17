@@ -1,7 +1,7 @@
-if exists('g:loaded_lv') && g:loaded_lv
+if exists('g:loaded_poorline') && g:loaded_poorline
     finish
 endif
-let g:loaded_lv = 1
+let g:loaded_poorline = 1
 
 
 " Status line
@@ -9,30 +9,30 @@ let g:loaded_lv = 1
 let s:last_status_mode = ''
 let s:last_status_mode_ret = ''
 
-function! lv#stl_mode()
+function! poorline#stl_mode()
     let l:status_mode = mode()
 
     if l:status_mode != s:last_status_mode
         if l:status_mode == 'n'
-            highlight LvStatusModeHL ctermbg=4 ctermfg=16
+            highlight PoorlineModeHL ctermbg=4 ctermfg=16
             let s:last_status_mode_ret = 'N'
         elseif l:status_mode == 'v' || l:status_mode == 'V' || l:status_mode == ''
-            highlight LvStatusModeHL ctermbg=3 ctermfg=16
+            highlight PoorlineModeHL ctermbg=3 ctermfg=16
             let s:last_status_mode_ret = 'V'
         elseif l:status_mode == 's' || l:status_mode == 'S' || l:status_mode == ''
-            highlight LvStatusModeHL ctermbg=5 ctermfg=16
+            highlight PoorlineModeHL ctermbg=5 ctermfg=16
             let s:last_status_mode_ret = 'S'
         elseif l:status_mode == 'i'
-            highlight LvStatusModeHL ctermbg=2 ctermfg=16
+            highlight PoorlineModeHL ctermbg=2 ctermfg=16
             let s:last_status_mode_ret = 'I'
         elseif l:status_mode == 'R'
-            highlight LvStatusModeHL ctermbg=1 ctermfg=16
+            highlight PoorlineModeHL ctermbg=1 ctermfg=16
             let s:last_status_mode_ret = 'R'
         elseif l:status_mode == 'Rv'
-            highlight LvStatusModeHL ctermbg=1 ctermfg=16
+            highlight PoorlineModeHL ctermbg=1 ctermfg=16
             let s:last_status_mode_ret = 'v'
         else
-            highlight LvStatusModeHL ctermbg=4 ctermfg=16
+            highlight PoorlineModeHL ctermbg=4 ctermfg=16
             let s:last_status_mode_ret = l:status_mode
         endif
         let s:last_status_mode = l:status_mode
@@ -42,7 +42,7 @@ function! lv#stl_mode()
 endfunction
 
 
-function! s:lv_statusline()
+function! s:poorline_statusline()
     if has('statusline')
         let &statusline = ''
         let &statusline .= ' - '
@@ -59,7 +59,7 @@ function! s:lv_statusline()
         let &statusline .= ' %3p%% '                         " scroll %.
 
         let s:stl_active = ''
-        let s:stl_active .= '%#LvStatusModeHL# %{lv#stl_mode()} '  " mode.
+        let s:stl_active .= '%#PoorlineModeHL# %{poorline#stl_mode()} '  " mode.
         let s:stl_active .= '%4* %n '                              " buffer.
         let s:stl_active .= '%3* %{&fenc != "" ? &fenc : &enc} '   " encoding.
         let s:stl_active .= '%2* %{&ff} '                          " format.
@@ -76,9 +76,9 @@ function! s:lv_statusline()
         highlight User2 ctermbg=248 ctermfg=16
         highlight User3 ctermbg=250 ctermfg=16
         highlight User4 ctermbg=252 ctermfg=16
-        highlight LvStatusModeHL ctermbg=4 ctermfg=16
+        highlight PoorlineModeHL ctermbg=4 ctermfg=16
 
-        augroup LvStatusLine
+        augroup Poorline
             au!
             au VimEnter,WinEnter,BufWinEnter * let &l:statusline = s:stl_active
             au WinLeave,BufWinLeave * let &l:statusline = ''
@@ -86,4 +86,4 @@ function! s:lv_statusline()
     endif
 endfunction
 
-call s:lv_statusline()
+call s:poorline_statusline()
