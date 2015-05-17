@@ -72,11 +72,11 @@ function! s:poorline_statusline()
         let s:stl_active .= '%3* C%5v '                            " col.
         let s:stl_active .= '%4* %3p%% '                           " scroll %.
 
-        highlight User1 ctermbg=235 ctermfg=231
-        highlight User2 ctermbg=248 ctermfg=16
-        highlight User3 ctermbg=250 ctermfg=16
-        highlight User4 ctermbg=252 ctermfg=16
-        highlight PoorlineModeHL ctermbg=4 ctermfg=16
+        highlight User1 ctermbg=235 ctermfg=255
+        highlight User2 ctermbg=248 ctermfg=232
+        highlight User3 ctermbg=250 ctermfg=232
+        highlight User4 ctermbg=252 ctermfg=232
+        highlight PoorlineModeHL ctermbg=4 ctermfg=232
 
         augroup Poorline
             au!
