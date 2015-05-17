@@ -4,30 +4,6 @@ endif
 let g:loaded_lv = 1
 
 
-" Git
-
-let s:git_current_branch = ''
-
-function! s:git_refresh()
-    let l:git_on = system('git -C ' . expand('%:p:h') .
-                          \ ' symbolic-ref --short HEAD 2> /dev/null')
-    if l:git_on != ''
-        let s:git_current_branch = 'git:' . substitute(l:git_on, '\n$', '', '')
-    else
-        let s:git_current_branch = ''
-    end
-endfunction
-
-augroup LvGitStatus
-    au!
-    au BufEnter * call <SID>git_refresh()
-augroup END
-
-function! lv#git_branch()
-    return s:git_current_branch
-endfunction
-
-
 " Status line
 
 let s:last_status_mode = ''
@@ -90,7 +66,6 @@ function! s:lv_statusline()
         let s:stl_active .= '%1* %t '                              " file name.
         let s:stl_active .= '%{&modified != "" ? "±" : " "} '      " modified.
         let s:stl_active .= '%r '                                  " read-only.
-        let s:stl_active .= '%{lv#git_branch()}'                     " git info.
         let s:stl_active .= '%='                                   " right align.
         let s:stl_active .= ' %Y '                                 " file type.
         let s:stl_active .= '%2* R%5l '                            " row.
