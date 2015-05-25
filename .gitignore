@@ -1,4 +1,5 @@
 # Colores, undo & netrw de vim
 vim/.netrwhist
+vim/bundle
 vim/colors
 vim/undo
